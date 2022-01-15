@@ -53,14 +53,18 @@
 
     <build>
         <plugins>
-            <plugin>
+           <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-
+                <mainClass>useCase01.pubSubToBq</mainClass>
+                <source>${java.version}</source>
+                <target>${java.version}</target>
                 </configuration>
             </plugin>
         </plugins>
