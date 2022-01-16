@@ -32,8 +32,8 @@ public class pubSubToBq {
         void setInputTopic(String inputTopic);
 
         @Description("Subscription name")
-        String getSubscription();
-        void setSubscription(String subscription);
+        String getsubTopic();
+        void setsubTopic(String subscription);
 
         @Description("Output BqTable name")
         String getTableName();
@@ -96,7 +96,7 @@ public class pubSubToBq {
         PCollectionTuple transformOut =
                 pipeline.apply("ReadPubSubMessages", PubsubIO.readStrings()
                                 .withTimestampAttribute("timestamp")
-                                .fromTopic(myOptions.getInputTopic()))
+                                .fromSubscription(myOptions.getsubTopic()))
                         .apply("ConvertMessageToCommonLog", new PubsubMessageToCommonLog());
 
         transformOut
